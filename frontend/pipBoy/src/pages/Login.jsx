@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = await login(email, password, 'asgard');
+    const success = await login(email, password, 'pip_boy');
     if (success) {
       toast.success('Login successfull. Welcome to the app');
       paraHome();

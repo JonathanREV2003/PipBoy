@@ -102,7 +102,7 @@ function Home() {
   
   const fetchData = async () => {
     const token = sessionStorage.getItem('token'); // Obtener el token de la sesión del navegador
-    const tenant = 'asgard'; // Reemplaza con el valor real de tenant
+    const tenant = 'pip_boy'; // Reemplaza con el valor real de tenant
 
     try {
       const response = await axios.get('http://localhost:8081/api/auth/verifyToken', {

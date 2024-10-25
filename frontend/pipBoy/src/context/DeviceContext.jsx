@@ -13,7 +13,7 @@ export const DeviceProvider = ({ children }) => {
 
   const fetchData = async () => {
     const token = sessionStorage.getItem('token');
-    const tenant = 'asgard';
+    const tenant = 'pip_boy';
 
     try {
       
