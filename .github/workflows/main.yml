@@ -21,6 +21,10 @@ jobs:
     - name: Clear existing files in the target folder
       run: |
         ssh -o StrictHostKeyChecking=no root@64.227.110.203 "rm -rf /root/Actions*"
+
+    - name: Create target directories
+      run: |
+        ssh -o StrictHostKeyChecking=no root@64.227.110.203 "mkdir -p /root/Actions/backend"
         
     - name: Copy docker-compose to server
       run: |
