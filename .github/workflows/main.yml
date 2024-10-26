@@ -24,7 +24,7 @@ jobs:
 
     - name: Create target directories
       run: |
-        ssh -o StrictHostKeyChecking=no root@64.227.110.203 "mkdir -p /root/Actions/backend"
+        ssh -o StrictHostKeyChecking=no root@64.227.110.203 "mkdir -p /root/Actions"
         
     - name: Copy docker-compose to server
       run: |
