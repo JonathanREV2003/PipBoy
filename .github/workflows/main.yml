@@ -28,9 +28,9 @@ jobs:
         scp -o StrictHostKeyChecking=no -r backend root@64.227.110.203:/root/Actions/backend  # Copia todo el backend
         scp -o StrictHostKeyChecking=no -r frontend root@64.227.110.203:/root/Actions/frontend  # Copia todo el frontend
 
-    - name: Copy .env file for backend
+    - name: Create .env file on the server
       run: |
-        scp -o StrictHostKeyChecking=no backend/.env root@64.227.110.203:/root/Actions/backend/.env
+        ssh -o StrictHostKeyChecking=no root@64.227.110.203 "echo 'MONGO_URL=${{ secrets.MONGO_URL }}' >> /root/Actions/backend/.env"
 
     - name: Deploy app with Docker Compose
       run: |
