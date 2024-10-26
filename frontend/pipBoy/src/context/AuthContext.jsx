@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
 
   const fetchUserData = async () => {
     const token = sessionStorage.getItem('token');
-    const tenant = 'asgard';
+    const tenant = 'pip_boy';
 
     if (!token) {
       return;
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer jArnU3u6IiVfQOsL2SKWksW7ubwY5oU6'
+            'Authorization': 'Bearer gWaIslUJNsPUqzv4W4C5bUEP98ZLi2Zh'
           },
           withCredentials: true
         }
@@ -78,7 +78,7 @@ const AuthProvider = ({ children }) => {
       setRefreshToken(refreshToken);
 
       // Crear y guardar el token combinado
-      const combinedToken = `Bearer jArnU3u6IiVfQOsL2SKWksW7ubwY5oU6|${response.data.accessToken}`;
+      const combinedToken = `Bearer gWaIslUJNsPUqzv4W4C5bUEP98ZLi2Zh|${response.data.accessToken}`;
       sessionStorage.setItem('token', combinedToken);
       await fetchUserData(); 
 
