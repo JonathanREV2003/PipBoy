@@ -35,7 +35,7 @@ jobs:
     - name: Create .env file on the server
       run: |
         ssh -o StrictHostKeyChecking=no root@64.227.110.203 "cat <<EOF > /root/Actions/backend/.env
-        DB_USER=${{ secrets.MONGO_URL }}"
+        MONGO_URL=${{ secrets.MONGO_URL }}"
 
     - name: Deploy app with Docker Compose
       run: |
