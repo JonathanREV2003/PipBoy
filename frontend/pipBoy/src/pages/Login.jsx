@@ -1,14 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { DeviceContext } from '../context/DeviceContext'; // Import DeviceContext
 import axios from 'axios';
-import {toast} from 'react-hot-toast'
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { login, fetchUserData } = useContext(AuthContext); // Destructure fetchUserData
+  const { fetchData } = useContext(DeviceContext); // Destructure fetchData
 
   const paraHome = () => {
     navigate('/home');
@@ -26,7 +28,9 @@ const Login = () => {
     e.preventDefault();
     const success = await login(email, password, 'pip_boy');
     if (success) {
-      toast.success('Login successfull. Welcome to the app');
+      await fetchUserData(); // Fetch user data after login
+      await fetchData(); // Fetch device data after login
+      toast.success('Login successful. Welcome to the app');
       paraHome();
     }
   };
@@ -64,20 +68,19 @@ const Login = () => {
             required
           />
         </div>
-                <button
+        <button
           type="submit"
           className="w-full bg-indigo-500 text-white p-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Login
         </button>
-        
-                         <button
-                  type="button"
-                  className="w-full bg-indigo-500 text-white p-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4"
-                  onClick={() => window.open('http://localhost:8080/realms/pip_boy/protocol/openid-connect/auth?client_id=account-console&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Frealms%2Fpip_boy%2Faccount%2F%23%2F&state=2a5803bd-3cc1-4395-8131-413aede0c769&response_mode=fragment&response_type=code&scope=openid&nonce=c9503e52-4efc-4af3-9af7-472b0fc3ba05&code_challenge=SKsHTNl1QWwhKn8TfOIl7qaXkcXCvj2G2Feau7r_s84&code_challenge_method=S256', '_blank')}
-                >
-                  Register
-                </button>
+        <button
+          type="button"
+          className="w-full bg-indigo-500 text-white p-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4"
+          onClick={() => window.open('http://localhost:8080/realms/pip_boy/protocol/openid-connect/auth?client_id=account-console&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Frealms%2Fpip_boy%2Faccount%2F%23%2F&state=2a5803bd-3cc1-4395-8131-413aede0c769&response_mode=fragment&response_type=code&scope=openid&nonce=c9503e52-4efc-4af3-9af7-472b0fc3ba05&code_challenge=SKsHTNl1QWwhKn8TfOIl7qaXkcXCvj2G2Feau7r_s84&code_challenge_method=S256', '_blank')}
+        >
+          Register
+        </button>
       </form>
     </div>
   );

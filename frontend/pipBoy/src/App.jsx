@@ -19,7 +19,7 @@ import Alertas from "./pages/Alertas";
 import { AuthVerificationProvider } from "./context/AuthVerificationContext";
 import { DeviceProvider } from "./context/DeviceContext";
 
-axios.defaults.baseURL = "http://64.227.110.203:3000";
+axios.defaults.baseURL = "http://localhost:8081/api/pip_boy";
 axios.defaults.withCredentials = true;
 
 function AppContent() {

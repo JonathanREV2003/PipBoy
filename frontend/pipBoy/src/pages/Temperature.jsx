@@ -15,8 +15,14 @@ function Temperature() {
   const navigate = useNavigate();
 
   const sensorTemperature = async () => {
+    const token = sessionStorage.getItem('token'); // Asegúrate de obtener el token de la sesión
     try {
-      const response = await axios.get("/sensor-temperature");
+      const response = await axios.get('/sensor-temperature?tenant=pip_boy', {
+        headers: {
+          Authorization: `${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
       if (response.data.temperatureC !== undefined) {
         setTemperature(response.data.temperatureC);
         const alertSettings = JSON.parse(localStorage.getItem("alertSettings"));

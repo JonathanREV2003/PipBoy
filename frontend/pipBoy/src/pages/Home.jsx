@@ -22,7 +22,7 @@ function Home() {
     const token = sessionStorage.getItem('token'); // Obtener el token de la sesión del navegador
 
     try {
-      const tempResponse = await axios.get('/average-temperature', {
+      const tempResponse = await axios.get('/average-temperature?tenant=pip_boy', {
         headers: {
           Authorization: `${token}`
         }
@@ -42,7 +42,7 @@ function Home() {
     const token = sessionStorage.getItem('token'); // Obtener el token de la sesión del navegador
 
     try {
-      const tempResponse = await axios.get('/average-heart-rate', {
+      const tempResponse = await axios.get('/average-heart-rate?tenant=pip_boy', {
         headers: {
           Authorization: `${token}`
         }
@@ -62,7 +62,7 @@ function Home() {
     const token = sessionStorage.getItem('token'); // Obtener el token de la sesión del navegador
 
     try {
-      const tempResponse = await axios.get('/average-oxygen', {
+      const tempResponse = await axios.get('/average-oxygen?tenant=pip_boy', {
         headers: {
           Authorization: `${token}`
         }
@@ -105,13 +105,11 @@ function Home() {
     const tenant = 'pip_boy'; // Reemplaza con el valor real de tenant
 
     try {
-      const response = await axios.get('http://localhost:8081/api/auth/verifyToken', {
+      const response = await axios.get('http://localhost:8081/api/auth/verifyToken?tenant=pip_boy', {
         headers: {
           Authorization: `${token}`
         },
-        params: {
-          tenant: tenant
-        }
+
       });
       console.log(response.data);
     } catch (error) {

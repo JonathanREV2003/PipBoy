@@ -13,10 +13,27 @@ const AuthProvider = ({ children }) => {
 
 
   const updateUsername = async (newUsername) => {
+    const token = sessionStorage.getItem('token');
+    const tenant = 'pip_boy'; // Asegúrate de que el tenant esté definido
+  
+    if (!token) {
+      console.error('Token is missing');
+      return;
+    }
+  
     try {
-      const response = await axios.post('/update-username', {
-        username: newUsername
-      });
+      const response = await axios.post(
+        '/update-username?tenant=pip_boy', // Asegúrate de que la URL es correcta
+        {
+          username: newUsername
+        },
+        {
+          headers: {
+            Authorization: `${token}`,
+            'Content-Type': 'application/json',
+          }
+        }
+      );
       console.log(response.data);
     } catch (error) {
       console.error('Error updating username:', error);
@@ -32,12 +49,9 @@ const AuthProvider = ({ children }) => {
     }
 
     try {
-      const response = await axios.get('http://localhost:8081/api/auth/verifyToken', {
+      const response = await axios.get('http://localhost:8081/api/auth/verifyToken?tenant=pip_boy', {
         headers: {
           Authorization: `${token}`
-        },
-        params: {
-          tenant: tenant
         }
       });
       setUser(response.data);

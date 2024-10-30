@@ -18,12 +18,13 @@ export const DeviceProvider = ({ children }) => {
     try {
       
 
-      const deviceResponse = await axios.get('/get-device-id');
+      const deviceResponse = await axios.get('http://localhost:8081/api/pip_boy/get-device-id?tenant=pip_boy', {
+        headers: { Authorization: `${token}` },
+      });
       setComparisonValue(deviceResponse.data.deviceId);
 
-      await axios.get('http://localhost:8081/api/auth/verifyToken', {
+      await axios.get('http://localhost:8081/api/auth/verifyToken?tenant=pip_boy', {
         headers: { Authorization: `${token}` },
-        params: { tenant: tenant }
       });
 
       setIsInitialized(true);
@@ -34,14 +35,15 @@ export const DeviceProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (!isInitialized) {
-      fetchData();
-    }
-  }, [isInitialized]);
+  // Remove useEffect that calls fetchData on component mount
+  // useEffect(() => {
+  //   if (!isInitialized) {
+  //     fetchData();
+  //   }
+  // }, [isInitialized]);
 
   return (
-    <DeviceContext.Provider value={{  comparisonValue, isInitialized, loading, error }}>
+    <DeviceContext.Provider value={{  comparisonValue, isInitialized, loading, error, fetchData }}>
       {children}
     </DeviceContext.Provider>
   );

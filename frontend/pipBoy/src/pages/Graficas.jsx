@@ -11,6 +11,7 @@ function Graficas() {
   const [fetchActive, setFetchActive] = useState(false);
   const maxDataPoints = 20; // Limitar a los últimos 20 puntos de datos
   const [alertSettings, setAlertSettings] = useState({});
+  const token = sessionStorage.getItem('token');
 
   useEffect(() => {
     // Cargar configuración de alertas desde localStorage
@@ -24,7 +25,7 @@ function Graficas() {
     if (!fetchActive) return;
 
     const worker = new Worker(new URL('../functions/sensorDataWorker.js', import.meta.url));
-    worker.postMessage({ maxDataPoints });
+    worker.postMessage({token, maxDataPoints });
 
     worker.onmessage = (event) => {
       const { type, newData, error } = event.data;

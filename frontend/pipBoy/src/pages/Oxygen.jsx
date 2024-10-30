@@ -18,10 +18,16 @@ function Oxygen() {
   const [counter, setCounter] = useState(25);
   const [counterIntervalId, setCounterIntervalId] = useState(null);
   const navigate = useNavigate();
+  const token = sessionStorage.getItem('token'); // Asegúrate de obtener el token de la sesión
 
   const sensorOxygen = async () => {
     try {
-      const response = await axios.get("/sensor-oxygen");
+           const response = await axios.get("/sensor-oxygen?tenant=pip_boy", {
+            headers: {
+              Authorization: `${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
       if (response.data.value !== undefined) {
         setOxygenLevel(response.data.value);
         const alertSettings = JSON.parse(localStorage.getItem("alertSettings"));
@@ -45,7 +51,12 @@ function Oxygen() {
 
   const sensorHeartRate = async () => {
     try {
-      const response = await axios.get("/sensor-heart-rate");
+      const response = await axios.get("/sensor-heart-rate?tenant=pip_boy", {
+        headers: {
+          Authorization: `${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
       if (response.data.avgBpm !== undefined) {
         setaverageBPM(response.data.avgBpm);
       }
