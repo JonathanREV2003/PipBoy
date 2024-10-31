@@ -4,7 +4,7 @@ self.onmessage = function (event) {
   const { maxDataPoints, token } = event.data; // Obtener el token del mensaje
 
   const fetchData = () => {
-    fetch('http://localhost:8081/api/pip_boy/sensor-data?tenant=pip_boy', {
+    fetch('https://www.waetherlink.us/api/pip_boy/sensor-data?tenant=pip_boy', {
       headers: {
         'Authorization': `${token}`,
         'Content-Type': 'application/json'

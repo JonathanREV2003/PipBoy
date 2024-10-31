@@ -19,7 +19,7 @@ import Alertas from "./pages/Alertas";
 import { AuthVerificationProvider } from "./context/AuthVerificationContext";
 import { DeviceProvider } from "./context/DeviceContext";
 
-axios.defaults.baseURL = "http://localhost:8081/api/pip_boy";
+axios.defaults.baseURL = "https://www.waetherlink.us/api/pip_boy";
 axios.defaults.withCredentials = true;
 
 function AppContent() {

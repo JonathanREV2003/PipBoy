@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
     }
 
     try {
-      const response = await axios.get('http://localhost:8081/api/auth/verifyToken?tenant=pip_boy', {
+      const response = await axios.get('https://www.waetherlink.us/api/auth/verifyToken?tenant=pip_boy', {
         headers: {
           Authorization: `${token}`
         }
@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password, tenant) => {
     try {
       const response = await axios.post(
-        'http://localhost:8081/api/auth/login', // Reemplaza con tu endpoint de Keycloak
+        'https://www.waetherlink.us/api/auth/login', // Reemplaza con tu endpoint de Keycloak
         {
           username: email,
           password: password,
@@ -75,7 +75,7 @@ const AuthProvider = ({ children }) => {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer gWaIslUJNsPUqzv4W4C5bUEP98ZLi2Zh'
+            'Authorization': 'Bearer xPF0yfpqs7N4JmUkgIiIMOxmQ0CHZLoR'
           },
           withCredentials: true
         }
@@ -92,7 +92,7 @@ const AuthProvider = ({ children }) => {
       setRefreshToken(refreshToken);
 
       // Crear y guardar el token combinado
-      const combinedToken = `Bearer gWaIslUJNsPUqzv4W4C5bUEP98ZLi2Zh|${response.data.accessToken}`;
+      const combinedToken = `Bearer xPF0yfpqs7N4JmUkgIiIMOxmQ0CHZLoR|${response.data.accessToken}`;
       sessionStorage.setItem('token', combinedToken);
       await fetchUserData(); 
 

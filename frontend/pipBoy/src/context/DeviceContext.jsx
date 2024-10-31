@@ -18,12 +18,12 @@ export const DeviceProvider = ({ children }) => {
     try {
       
 
-      const deviceResponse = await axios.get('http://localhost:8081/api/pip_boy/get-device-id?tenant=pip_boy', {
+      const deviceResponse = await axios.get('https://www.waetherlink.us/api/pip_boy/get-device-id?tenant=pip_boy', {
         headers: { Authorization: `${token}` },
       });
       setComparisonValue(deviceResponse.data.deviceId);
 
-      await axios.get('http://localhost:8081/api/auth/verifyToken?tenant=pip_boy', {
+      await axios.get('https://www.waetherlink.us/api/auth/verifyToken?tenant=pip_boy', {
         headers: { Authorization: `${token}` },
       });
 
