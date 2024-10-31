@@ -41,7 +41,7 @@ const Login = () => {
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">PipBoy</h2>
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email:
@@ -72,7 +72,7 @@ const Login = () => {
           type="submit"
           className="w-full bg-indigo-500 text-white p-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          Login
+          Sign in
         </button>
         <button
           type="button"
