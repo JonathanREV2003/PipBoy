@@ -83,6 +83,10 @@ const AuthProvider = ({ children }) => {
 
       const { accessToken, refreshToken } = response.data;
 
+      // Actualizar el estado
+      setAccessToken(accessToken);
+      setRefreshToken(refreshToken);
+
       // Guardar los tokens en sessionStorage
       sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('refreshToken', refreshToken);
