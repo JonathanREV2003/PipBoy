@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-const token = sessionStorage.getItem('token'); // Obtener el token de la sesión
+const getToken = () => {
+  return sessionStorage.getItem('token');
+};
 
 export const fetchDevices = async () => {
+  const token = getToken();
   try {
     const response = await axios.get('/getDevice?tenant=pip_boy', {
       headers: {
@@ -18,6 +21,7 @@ export const fetchDevices = async () => {
 };
 
 export const createDevice = async (newDevice) => {
+  const token = getToken();
   try {
     await axios.post('/device?tenant=pip_boy', newDevice, {
       headers: {

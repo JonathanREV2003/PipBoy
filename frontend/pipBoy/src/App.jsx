@@ -38,7 +38,7 @@ function AppContent() {
           <DeviceProvider>
             <Toaster
               position="bottom-right"
-              toastOptions={{ duration: 3000 }}
+              toastOptions={{ duration: 2000 }}
             />
             {showHeader && <Sidebar />}
             <main

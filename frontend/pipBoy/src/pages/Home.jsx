@@ -122,7 +122,7 @@ function Home() {
     fetchAverageTemperature();
     fetchAverageOyxgen();
     fetchAverageBPM();
-    const intervalId = setInterval(fetchData, 30000); // Ejecutar fetchData cada 30 segundos
+    const intervalId = setInterval(fetchData, 300000); // Ejecutar fetchData cada 5 minutos (300000 ms)
     return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
   }, []);
 
