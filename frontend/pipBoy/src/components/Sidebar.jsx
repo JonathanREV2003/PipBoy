@@ -19,6 +19,7 @@ const Sidebar = () => {
   const { logout } = useContext(AuthContext);
 
   const handleLogout = async () => {
+      sessionStorage.clear();
       navigate('/');
   };
 
