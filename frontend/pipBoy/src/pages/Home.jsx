@@ -105,7 +105,7 @@ function Home() {
     const tenant = 'pip_boy'; // Reemplaza con el valor real de tenant
 
     try {
-      const response = await axios.get('https://www.waetherlink.us/api/auth/verifyToken?tenant=pip_boy', {
+      const response = await axios.get('https://www.waetherlink.us/api/pip_boy/authenticate?tenant=pip_boy', {
         headers: {
           Authorization: `${token}`
         },
