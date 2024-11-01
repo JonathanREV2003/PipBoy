@@ -1,5 +1,5 @@
 import axios from 'axios';
-const token = sessionStorage.getItem('token'); // Asegúrate de obtener el token de la sesión
+let token = sessionStorage.getItem('token'); // Asegúrate de obtener el token de la sesión
 
 export const startSending = (setFetchActive) => {
   axios.post('/start-sending?tenant=pip_boy', {},  {
