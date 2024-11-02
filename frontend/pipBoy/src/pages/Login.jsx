@@ -77,7 +77,7 @@ const Login = () => {
         <button
           type="button"
           className="w-full bg-indigo-500 text-white p-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4"
-          onClick={() => window.open('https://www.waetherlink.us/realms/pip_boy/login-actions/registration?client_id=account-console&tab_id=SmZ30yGV8-c', '_blank')}
+          onClick={() => window.open('https://www.waetherlink.us/realms/pip_boy/protocol/openid-connect/auth?client_id=security-admin-console&redirect_uri=https%3A%2F%2Fwww.waetherlink.us%2Fadmin%2Fpip_boy%2Fconsole%2F&state=e1d89c4f-4a34-4ffb-b4c7-dd80a55168b2&response_mode=fragment&response_type=code&scope=openid&nonce=9a219b85-648e-4eed-81e0-6425960c4e90&code_challenge=ST7M5envYMye2SeBaRJ9TqQ2lOBlzuszlPkfdVE_1qc&code_challenge_method=S256', '_blank')}
         >
           Register
         </button>
