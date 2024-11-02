@@ -18,6 +18,10 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
 
+  const getToken = () => {
+    return sessionStorage.getItem('token');
+};
+
   const handleLogout = async () => {
       sessionStorage.clear();
       navigate('/');
@@ -60,9 +64,26 @@ const Sidebar = () => {
               <RiHome3Line /> Home
             </button>
 
-            {hasRole('admin') && (
+                        {hasRole('admin') && (
               <button
-                onClick={() => navigate("/device-selection")}
+                onClick={async () => {
+                  const token = sessionStorage.getItem('token');
+                  try {
+                    const token = getToken();
+                    const response = await axios.get('/device-selection', {
+                      headers: {
+                        Authorization: `${token}`,
+                        'Content-Type': 'application/json'
+                      }
+                    });
+                    if (response.status === 200) {
+                      navigate("/device-selection");
+                    }
+                  } catch (error) {
+                    console.error('Error:', error);
+                    alert('No se pudo autenticar para la selección de dispositivos');
+                  }
+                }}
                 className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
               >
                 <RiPieChartLine /> Device Manager
